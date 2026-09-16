@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MqPrinterFixer.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd24548dcc2b5ecfae486a8b800d994d9ad7ff18")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+934abfbf67aee61e4057d8309aafa4507da2a372")]
 [assembly: System.Reflection.AssemblyProductAttribute("MqPrinterFixer.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MqPrinterFixer.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

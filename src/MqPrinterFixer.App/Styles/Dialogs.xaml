@@ -1,0 +1,15 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Style cho Window dạng dialog (Phase 19+ sẽ dùng) -->
+    <Style x:Key="AppDialogWindowStyle" TargetType="Window">
+        <Setter Property="Background" Value="{DynamicResource CardBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+        <Setter Property="WindowStartupLocation" Value="CenterOwner"/>
+        <Setter Property="ShowInTaskbar" Value="False"/>
+        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+        <Setter Property="MinWidth" Value="400"/>
+    </Style>
+
+</ResourceDictionary>

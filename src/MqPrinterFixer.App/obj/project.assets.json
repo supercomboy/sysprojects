@@ -52,6 +52,28 @@
         "build": {
           "buildTransitive/net8.0/_._": {}
         }
+      },
+      "System.Management/10.0.12": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/System.Management.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/System.Management.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net10.0/System.Management.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
       }
     }
   },
@@ -157,16 +179,49 @@
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "System.Management/10.0.12": {
+      "sha512": "ApUsYmsNG8aPiMxsO6ROGZnqJwSZY8zeMlAQcuQg+ilPFUcIyBUC0BL8qA6wmPLNVsvL4nyhUrhhxh6qn0cx0Q==",
+      "type": "package",
+      "path": "system.management/10.0.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Management.targets",
+        "lib/net10.0/System.Management.dll",
+        "lib/net10.0/System.Management.xml",
+        "lib/net462/_._",
+        "lib/net8.0/System.Management.dll",
+        "lib/net8.0/System.Management.xml",
+        "lib/net9.0/System.Management.dll",
+        "lib/net9.0/System.Management.xml",
+        "lib/netstandard2.0/System.Management.dll",
+        "lib/netstandard2.0/System.Management.xml",
+        "runtimes/win/lib/net10.0/System.Management.dll",
+        "runtimes/win/lib/net10.0/System.Management.xml",
+        "runtimes/win/lib/net8.0/System.Management.dll",
+        "runtimes/win/lib/net8.0/System.Management.xml",
+        "runtimes/win/lib/net9.0/System.Management.dll",
+        "runtimes/win/lib/net9.0/System.Management.xml",
+        "system.management.10.0.12.nupkg.sha512",
+        "system.management.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net10.0-windows": [
       "CommunityToolkit.Mvvm >= 8.4.2",
-      "Microsoft.Extensions.DependencyInjection >= 10.0.12"
+      "Microsoft.Extensions.DependencyInjection >= 10.0.12",
+      "System.Management >= 10.0.12"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MQ\\.nuget\\packages\\": {}
+    "C:\\Users\\PC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -174,11 +229,11 @@
       "projectUniqueName": "F:\\Project\\MQ-Printer-Fixer-Workspace\\src\\MqPrinterFixer.App\\MqPrinterFixer.App.csproj",
       "projectName": "MqPrinterFixer.App",
       "projectPath": "F:\\Project\\MQ-Printer-Fixer-Workspace\\src\\MqPrinterFixer.App\\MqPrinterFixer.App.csproj",
-      "packagesPath": "C:\\Users\\MQ\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
       "outputPath": "F:\\Project\\MQ-Printer-Fixer-Workspace\\src\\MqPrinterFixer.App\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\MQ\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0-windows"
@@ -215,6 +270,10 @@
             "version": "[8.4.2, )"
           },
           "Microsoft.Extensions.DependencyInjection": {
+            "target": "Package",
+            "version": "[10.0.12, )"
+          },
+          "System.Management": {
             "target": "Package",
             "version": "[10.0.12, )"
           }

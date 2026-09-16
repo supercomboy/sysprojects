@@ -9,7 +9,8 @@
       "MqPrinterFixer.App/1.0.0": {
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.4.2",
-          "Microsoft.Extensions.DependencyInjection": "10.0.12"
+          "Microsoft.Extensions.DependencyInjection": "10.0.12",
+          "System.Management": "10.0.12"
         },
         "runtime": {
           "MqPrinterFixer.App.dll": {}
@@ -38,6 +39,22 @@
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
+      "System.Management/10.0.12": {
+        "runtime": {
+          "lib/net10.0/System.Management.dll": {
+            "assemblyVersion": "10.0.0.12",
+            "fileVersion": "10.0.1226.42308"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net10.0/System.Management.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "10.0.0.12",
             "fileVersion": "10.0.1226.42308"
           }
         }
@@ -70,6 +87,13 @@
       "sha512": "sha512-9/qymSh7hVDMGTGwrLz8MRp5zRyXy9adGDOs4HwRdnLil3oZGYuWeZjbmHgCQ9BL1qBroVfgUK3U/nb61617Cw==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/10.0.12",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.10.0.12.nupkg.sha512"
+    },
+    "System.Management/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ApUsYmsNG8aPiMxsO6ROGZnqJwSZY8zeMlAQcuQg+ilPFUcIyBUC0BL8qA6wmPLNVsvL4nyhUrhhxh6qn0cx0Q==",
+      "path": "system.management/10.0.12",
+      "hashPath": "system.management.10.0.12.nupkg.sha512"
     }
   }
 }

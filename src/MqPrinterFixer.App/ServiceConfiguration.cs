@@ -5,24 +5,35 @@ using MqPrinterFixer.App.ViewModels;
 
 namespace MqPrinterFixer.App;
 
-/// <summary>
-/// Đăng ký toàn bộ service, ViewModel, Window vào DI container.
-/// Tách riêng khỏi <see cref="App"/> để test project có thể dùng lại.
-/// </summary>
 public static class ServiceConfiguration
 {
     public static IServiceCollection AddMqPrinterFixerServices(this IServiceCollection services)
     {
-        // ----- Services -----
+        // ----- Infrastructure Services -----
+        services.AddSingleton<IPowerShellService, PowerShellService>();
+        services.AddSingleton<ISystemInfoService, SystemInfoService>();
+        services.AddSingleton<IComputerService, ComputerService>();
+        services.AddSingleton<IPrinterService, PrinterService>();
         services.AddSingleton<IThemeService, ThemeService>();
+        services.AddSingleton<INavigationService, NavigationService>();
 
-        // ----- ViewModels -----
+        // ----- Page ViewModels -----
+        services.AddSingleton<DashboardViewModel>();
+        services.AddSingleton<PrintersViewModel>();
+        services.AddSingleton<NetworkSharingViewModel>();
+        services.AddSingleton<Error0x11BViewModel>();
+        services.AddSingleton<Error0x709ViewModel>();
+        services.AddSingleton<AdvancedViewModel>();
+        services.AddSingleton<LogsViewModel>();
+        services.AddSingleton<SettingsViewModel>();
+
+        // ----- Dialog ViewModels (transient) -----
+        services.AddTransient<RenameComputerDialogViewModel>();
+
+        // ----- Shell ViewModel & Window -----
         services.AddSingleton<MainViewModel>();
-
-        // ----- Windows -----
         services.AddSingleton<MainWindow>();
 
-        // Các service nghiệp vụ khác sẽ đăng ký ở Phase 8+
         return services;
     }
 }
