@@ -1,0 +1,38 @@
+﻿<Window x:Class="MqPrinterFixer.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MQ Printer Fixer"
+        Height="720"
+        Width="1200"
+        MinHeight="700"
+        MinWidth="1100"
+        WindowStartupLocation="CenterScreen"
+        Background="#1E1E2E">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+
+            <TextBlock Text="MQ Printer Fixer"
+                       Foreground="#FFFFFF"
+                       FontSize="44"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Diagnose and repair LAN printer problems"
+                       Foreground="#B8B8C8"
+                       FontSize="16"
+                       Margin="0,14,0,0"
+                       HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Phase 1 — Solution scaffolding ready"
+                       Foreground="#6E6E80"
+                       FontSize="13"
+                       Margin="0,40,0,0"
+                       HorizontalAlignment="Center"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

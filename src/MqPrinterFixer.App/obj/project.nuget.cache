@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "KeZFEUSG3Ew=",
+  "success": true,
+  "projectFilePath": "F:\\Project\\MQ-Printer-Fixer-Workspace\\src\\MqPrinterFixer.App\\MqPrinterFixer.App.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MQ\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.2\\communitytoolkit.mvvm.8.4.2.nupkg.sha512",
+    "C:\\Users\\MQ\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.12\\microsoft.extensions.dependencyinjection.10.0.12.nupkg.sha512",
+    "C:\\Users\\MQ\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.12\\microsoft.extensions.dependencyinjection.abstractions.10.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MqPrinterFixer.App/MqPrinterFixer.App.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MqPrinterFixer.Tests/MqPrinterFixer.Tests.csproj" />
+  </Folder>
+</Solution>
