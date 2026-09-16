@@ -3,32 +3,47 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:MqPrinterFixer.App.ViewModels"
         mc:Ignorable="d"
-        Title="MQ Printer Fixer"
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
+        Title="{Binding Title}"
         Height="720"
         Width="1200"
         MinHeight="700"
         MinWidth="1100"
         WindowStartupLocation="CenterScreen"
-        Background="#1E1E2E">
+        Background="{DynamicResource AppBackgroundBrush}">
 
     <Grid>
+
+        <!-- Nút tạm Phase 5 - Cycle System → Light → Dark → System -->
+        <Button Content="{Binding CurrentThemeDisplay, StringFormat='Theme: {0}'}"
+                Command="{Binding CycleThemeCommand}"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,16,16,0"
+                Padding="16,8"
+                Background="{DynamicResource PrimaryBrush}"
+                Foreground="{DynamicResource TextOnPrimaryBrush}"
+                BorderThickness="0"
+                Cursor="Hand"/>
+
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 
-            <TextBlock Text="MQ Printer Fixer"
-                       Foreground="#FFFFFF"
+            <TextBlock Text="{Binding AppName}"
+                       Foreground="{DynamicResource TextPrimaryBrush}"
                        FontSize="44"
                        FontWeight="SemiBold"
                        HorizontalAlignment="Center"/>
 
-            <TextBlock Text="Diagnose and repair LAN printer problems"
-                       Foreground="#B8B8C8"
+            <TextBlock Text="{Binding Subtitle}"
+                       Foreground="{DynamicResource TextSecondaryBrush}"
                        FontSize="16"
                        Margin="0,14,0,0"
                        HorizontalAlignment="Center"/>
 
-            <TextBlock Text="Phase 1 — Solution scaffolding ready"
-                       Foreground="#6E6E80"
+            <TextBlock Text="{Binding StatusMessage}"
+                       Foreground="{DynamicResource TextDisabledBrush}"
                        FontSize="13"
                        Margin="0,40,0,0"
                        HorizontalAlignment="Center"/>

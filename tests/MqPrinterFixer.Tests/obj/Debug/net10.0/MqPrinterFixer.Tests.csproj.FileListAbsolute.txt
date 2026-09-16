@@ -95,3 +95,4 @@ F:\Project\MQ-Printer-Fixer-Workspace\tests\MqPrinterFixer.Tests\obj\Debug\net10
 F:\Project\MQ-Printer-Fixer-Workspace\tests\MqPrinterFixer.Tests\obj\Debug\net10.0\MqPrinterFixer.Tests.genruntimeconfig.cache
 F:\Project\MQ-Printer-Fixer-Workspace\tests\MqPrinterFixer.Tests\obj\Debug\net10.0\ref\MqPrinterFixer.Tests.dll
 F:\Project\MQ-Printer-Fixer-Workspace\tests\MqPrinterFixer.Tests\bin\Debug\net10.0\CommunityToolkit.Mvvm.dll
+F:\Project\MQ-Printer-Fixer-Workspace\tests\MqPrinterFixer.Tests\obj\Debug\net10.0\MqPrinterFixer.Tests.sourcelink.json

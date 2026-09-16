@@ -22,3 +22,9 @@ F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\bin\Debug\net10.0-w
 F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\bin\Debug\net10.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\MqPrinterFixer.App.csproj.AssemblyReference.cache
 F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\MqPrinte.40E1FA03.Up2Date
+F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\MqPrinterFixer.App.sourcelink.json
+F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\MqPrinterFixer.App_MarkupCompile.lref
+F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\Themes\DarkTheme.baml
+F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\Themes\LightTheme.baml
+F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\Themes\ThemeResources.baml
+F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\App.baml

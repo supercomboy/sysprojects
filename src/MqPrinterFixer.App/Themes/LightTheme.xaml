@@ -1,0 +1,36 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ===== Surfaces ===== -->
+    <SolidColorBrush x:Key="AppBackgroundBrush"     Color="#F3F3F3"/>
+    <SolidColorBrush x:Key="CardBackgroundBrush"    Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="SidebarBackgroundBrush" Color="#FAFAFA"/>
+    <SolidColorBrush x:Key="HeaderBackgroundBrush"  Color="#FAFAFA"/>
+    <SolidColorBrush x:Key="ConsoleBackgroundBrush" Color="#1E1E2E"/>
+
+    <!-- ===== Accent ===== -->
+    <SolidColorBrush x:Key="PrimaryBrush"        Color="#0067C0"/>
+    <SolidColorBrush x:Key="PrimaryHoverBrush"   Color="#1A7DD1"/>
+    <SolidColorBrush x:Key="PrimaryPressedBrush" Color="#005BA1"/>
+
+    <!-- ===== Semantic ===== -->
+    <SolidColorBrush x:Key="SuccessBrush" Color="#0F7B0F"/>
+    <SolidColorBrush x:Key="WarningBrush" Color="#9D5D00"/>
+    <SolidColorBrush x:Key="ErrorBrush"   Color="#C42B1C"/>
+    <SolidColorBrush x:Key="InfoBrush"    Color="#0078D4"/>
+
+    <!-- ===== Text ===== -->
+    <SolidColorBrush x:Key="TextPrimaryBrush"   Color="#1A1A1A"/>
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="#5A5A5A"/>
+    <SolidColorBrush x:Key="TextDisabledBrush"  Color="#A0A0A0"/>
+    <SolidColorBrush x:Key="TextOnPrimaryBrush" Color="#FFFFFF"/>
+
+    <!-- ===== Borders & States ===== -->
+    <SolidColorBrush x:Key="BorderBrush"               Color="#E5E5E5"/>
+    <SolidColorBrush x:Key="DividerBrush"              Color="#EDEDED"/>
+    <SolidColorBrush x:Key="HoverBackgroundBrush"      Color="#F0F0F0"/>
+    <SolidColorBrush x:Key="SelectionBackgroundBrush"  Color="#E0EEFB"/>
+    <SolidColorBrush x:Key="NavigationSelectedBrush"   Color="#E0EEFB"/>
+    <SolidColorBrush x:Key="NavigationHoverBrush"      Color="#F0F0F0"/>
+
+</ResourceDictionary>

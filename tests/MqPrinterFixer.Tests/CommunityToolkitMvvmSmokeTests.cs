@@ -1,5 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-
+using System.Collections.Generic;
 namespace MqPrinterFixer.Tests;
 
 public class CommunityToolkitMvvmSmokeTests
