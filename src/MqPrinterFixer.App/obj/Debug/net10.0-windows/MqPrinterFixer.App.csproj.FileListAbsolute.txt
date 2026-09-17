@@ -49,3 +49,9 @@ F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\bin\Debug\net10.0-w
 F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\bin\Debug\net10.0-windows\runtimes\win\lib\net10.0\System.Management.dll
 F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\Views\PrintersView.g.cs
 F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\Views\PrintersView.baml
+F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\Views\NetworkSharingView.g.cs
+F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\Views\NetworkSharingView.baml
+F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\Views\AdvancedView.g.cs
+F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\obj\Debug\net10.0-windows\Views\AdvancedView.baml
+F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\bin\Debug\net10.0-windows\System.ServiceProcess.ServiceController.dll
+F:\Project\MQ-Printer-Fixer-Workspace\src\MqPrinterFixer.App\bin\Debug\net10.0-windows\runtimes\win\lib\net10.0\System.ServiceProcess.ServiceController.dll

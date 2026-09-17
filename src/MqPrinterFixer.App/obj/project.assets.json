@@ -74,6 +74,28 @@
             "rid": "win"
           }
         }
+      },
+      "System.ServiceProcess.ServiceController/10.0.12": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/System.ServiceProcess.ServiceController.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/System.ServiceProcess.ServiceController.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net10.0/System.ServiceProcess.ServiceController.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
       }
     }
   },
@@ -211,13 +233,49 @@
         "system.management.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "System.ServiceProcess.ServiceController/10.0.12": {
+      "sha512": "sFV+RM/yPtshiCAEIuTm8Dt4F7VuKRbL50PnGC9nXHolk/jw+z3T8zx7axKTBC8mqtQU2ZmjsoPC9b1iwOilNQ==",
+      "type": "package",
+      "path": "system.serviceprocess.servicecontroller/10.0.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.ServiceProcess.ServiceController.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/System.ServiceProcess.ServiceController.targets",
+        "lib/net10.0/System.ServiceProcess.ServiceController.dll",
+        "lib/net10.0/System.ServiceProcess.ServiceController.xml",
+        "lib/net462/System.ServiceProcess.ServiceController.dll",
+        "lib/net462/System.ServiceProcess.ServiceController.xml",
+        "lib/net8.0/System.ServiceProcess.ServiceController.dll",
+        "lib/net8.0/System.ServiceProcess.ServiceController.xml",
+        "lib/net9.0/System.ServiceProcess.ServiceController.dll",
+        "lib/net9.0/System.ServiceProcess.ServiceController.xml",
+        "lib/netstandard2.0/System.ServiceProcess.ServiceController.dll",
+        "lib/netstandard2.0/System.ServiceProcess.ServiceController.xml",
+        "runtimes/win/lib/net10.0/System.ServiceProcess.ServiceController.dll",
+        "runtimes/win/lib/net10.0/System.ServiceProcess.ServiceController.xml",
+        "runtimes/win/lib/net8.0/System.ServiceProcess.ServiceController.dll",
+        "runtimes/win/lib/net8.0/System.ServiceProcess.ServiceController.xml",
+        "runtimes/win/lib/net9.0/System.ServiceProcess.ServiceController.dll",
+        "runtimes/win/lib/net9.0/System.ServiceProcess.ServiceController.xml",
+        "system.serviceprocess.servicecontroller.10.0.12.nupkg.sha512",
+        "system.serviceprocess.servicecontroller.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net10.0-windows": [
       "CommunityToolkit.Mvvm >= 8.4.2",
       "Microsoft.Extensions.DependencyInjection >= 10.0.12",
-      "System.Management >= 10.0.12"
+      "System.Management >= 10.0.12",
+      "System.ServiceProcess.ServiceController >= 10.0.12"
     ]
   },
   "packageFolders": {
@@ -274,6 +332,10 @@
             "version": "[10.0.12, )"
           },
           "System.Management": {
+            "target": "Package",
+            "version": "[10.0.12, )"
+          },
+          "System.ServiceProcess.ServiceController": {
             "target": "Package",
             "version": "[10.0.12, )"
           }

@@ -30,7 +30,6 @@ public class MainViewModelTests
     {
         using var provider = BuildProvider();
         var vm = provider.GetRequiredService<MainViewModel>();
-
         Assert.NotNull(vm);
         Assert.IsType<MainViewModel>(vm);
     }
@@ -95,6 +94,30 @@ public class MainViewModelTests
         Assert.False(string.IsNullOrWhiteSpace(vm.WindowsEditionDisplay));
         Assert.NotEqual("...", vm.WindowsEditionDisplay);
         Assert.Equal(vm.IsAdministrator ? "Yes" : "No", vm.AdministratorDisplay);
+    }
+
+    [Fact]
+    public async Task MainViewModel_LoadPrinterRole_PopulatesDisplay()
+    {
+        using var provider = BuildProvider();
+        var vm = provider.GetRequiredService<MainViewModel>();
+
+        await vm.LoadPrinterRoleCommand.ExecuteAsync(null);
+
+        Assert.False(string.IsNullOrWhiteSpace(vm.PrinterRoleDisplay));
+        Assert.NotEqual("...", vm.PrinterRoleDisplay);
+    }
+
+    [Fact]
+    public async Task MainViewModel_LoadNetwork_PopulatesDisplay()
+    {
+        using var provider = BuildProvider();
+        var vm = provider.GetRequiredService<MainViewModel>();
+
+        await vm.LoadNetworkCommand.ExecuteAsync(null);
+
+        Assert.False(string.IsNullOrWhiteSpace(vm.NetworkProfileDisplay));
+        Assert.NotEqual("...", vm.NetworkProfileDisplay);
     }
 
     private static ServiceProvider BuildProvider()

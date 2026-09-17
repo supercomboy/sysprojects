@@ -10,7 +10,8 @@
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.4.2",
           "Microsoft.Extensions.DependencyInjection": "10.0.12",
-          "System.Management": "10.0.12"
+          "System.Management": "10.0.12",
+          "System.ServiceProcess.ServiceController": "10.0.12"
         },
         "runtime": {
           "MqPrinterFixer.App.dll": {}
@@ -58,6 +59,22 @@
             "fileVersion": "10.0.1226.42308"
           }
         }
+      },
+      "System.ServiceProcess.ServiceController/10.0.12": {
+        "runtime": {
+          "lib/net10.0/System.ServiceProcess.ServiceController.dll": {
+            "assemblyVersion": "10.0.0.12",
+            "fileVersion": "10.0.1226.42308"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net10.0/System.ServiceProcess.ServiceController.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "10.0.0.12",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
       }
     }
   },
@@ -94,6 +111,13 @@
       "sha512": "sha512-ApUsYmsNG8aPiMxsO6ROGZnqJwSZY8zeMlAQcuQg+ilPFUcIyBUC0BL8qA6wmPLNVsvL4nyhUrhhxh6qn0cx0Q==",
       "path": "system.management/10.0.12",
       "hashPath": "system.management.10.0.12.nupkg.sha512"
+    },
+    "System.ServiceProcess.ServiceController/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sFV+RM/yPtshiCAEIuTm8Dt4F7VuKRbL50PnGC9nXHolk/jw+z3T8zx7axKTBC8mqtQU2ZmjsoPC9b1iwOilNQ==",
+      "path": "system.serviceprocess.servicecontroller/10.0.12",
+      "hashPath": "system.serviceprocess.servicecontroller.10.0.12.nupkg.sha512"
     }
   }
 }

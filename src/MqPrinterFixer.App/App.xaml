@@ -7,11 +7,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
 
-                <!-- Themes -->
                 <ResourceDictionary Source="Themes/ThemeResources.xaml"/>
                 <ResourceDictionary Source="Themes/DarkTheme.xaml"/>
 
-                <!-- Design system -->
                 <ResourceDictionary Source="Styles/Typography.xaml"/>
                 <ResourceDictionary Source="Styles/Buttons.xaml"/>
                 <ResourceDictionary Source="Styles/Cards.xaml"/>
@@ -25,7 +23,6 @@
 
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- Page-specific templates (exact type match wins over base) -->
             <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
                 <views:DashboardView/>
             </DataTemplate>
@@ -34,7 +31,14 @@
                 <views:PrintersView/>
             </DataTemplate>
 
-            <!-- Fallback for remaining pages -->
+            <DataTemplate DataType="{x:Type vm:NetworkSharingViewModel}">
+                <views:NetworkSharingView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:AdvancedViewModel}">
+                <views:AdvancedView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type vm:PageViewModelBase}">
                 <views:PlaceholderPageView/>
             </DataTemplate>

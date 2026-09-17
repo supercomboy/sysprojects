@@ -22,7 +22,6 @@
             <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
 
-        <!-- ============ TOP HEADER ============ -->
         <Border Grid.Row="0"
                 Background="{DynamicResource HeaderBackgroundBrush}"
                 BorderBrush="{DynamicResource DividerBrush}"
@@ -48,14 +47,16 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
-                        <TextBlock Text="{Binding ComputerName}"
-                                   Style="{StaticResource SmallTextStyle}"/>
-                        <TextBlock Text=" · "
-                                   Style="{StaticResource CaptionTextStyle}"/>
-                        <TextBlock Text="{Binding WindowsEditionDisplay}"
-                                   Style="{StaticResource SmallTextStyle}"/>
-                        <TextBlock Text=" · "
-                                   Style="{StaticResource CaptionTextStyle}"/>
+                        <TextBlock Text="{Binding ComputerName}" Style="{StaticResource SmallTextStyle}"/>
+                        <TextBlock Text=" · " Style="{StaticResource CaptionTextStyle}"/>
+                        <TextBlock Text="{Binding PrinterRoleDisplay}"
+                                   Style="{StaticResource SmallTextStyle}"
+                                   FontWeight="SemiBold"/>
+                        <TextBlock Text=" · " Style="{StaticResource CaptionTextStyle}"/>
+                        <TextBlock Text="{Binding NetworkProfileDisplay}" Style="{StaticResource SmallTextStyle}"/>
+                        <TextBlock Text=" · " Style="{StaticResource CaptionTextStyle}"/>
+                        <TextBlock Text="{Binding WindowsEditionDisplay}" Style="{StaticResource SmallTextStyle}"/>
+                        <TextBlock Text=" · " Style="{StaticResource CaptionTextStyle}"/>
                         <TextBlock Text="{Binding AdministratorDisplay, StringFormat='Admin: {0}'}"
                                    Style="{StaticResource SmallTextStyle}"/>
                     </StackPanel>
@@ -79,7 +80,6 @@
             </Grid>
         </Border>
 
-        <!-- ============ MIDDLE: SIDEBAR + CONTENT ============ -->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="220"/>
@@ -100,7 +100,6 @@
             <ContentControl Grid.Column="1" Content="{Binding CurrentPage}"/>
         </Grid>
 
-        <!-- ============ CONSOLE ============ -->
         <Border Grid.Row="2"
                 Background="{DynamicResource ConsoleBackgroundBrush}"
                 BorderBrush="{DynamicResource DividerBrush}"

@@ -4,92 +4,216 @@ using Xunit;
 
 namespace MqPrinterFixer.Tests;
 
-public class PrinterStatusMapperTests
+public class PrinterRoleMapperTests
 {
-    [Fact]
-    public void Map_WorkOffline_AlwaysReturnsOffline()
-    {
-        // Kể cả PrinterStatus = Idle
-        var status = PrinterStatusMapper.Map(
-            workOffline: true,
-            printerStatus: 3,
-            detectedErrorState: 2);
+    private const string Local = "PC-LOCAL";
 
-        Assert.Equal(PrinterStatus.Offline, status);
+    // ---------- Helpers tạo PrinterInfo gọn ----------
+    private static PrinterInfo P(
+        string name = "P",
+        bool shared = false,
+        string shareName = "",
+        string sourceHost = "",
+        PrinterConnectionType type = PrinterConnectionType.Usb)
+        => new(
+            Name: name,
+            Status: PrinterStatus.Ready,
+            IsDefault: false,
+            ConnectionType: type,
+            PortName: "USB001",
+            DriverName: "D",
+            IsShared: shared,
+            ShareName: shareName,
+            SourceHost: sourceHost,
+            PrinterPath: string.Empty,
+            Location: string.Empty,
+            Comment: string.Empty);
+
+    // ============================================================
+    //   ComputeRole
+    // ============================================================
+
+    [Fact]
+    public void ComputeRole_EmptyList_ReturnsStandalone()
+    {
+        var role = PrinterRoleMapper.ComputeRole(Array.Empty<PrinterInfo>(), Local);
+        Assert.Equal(PrinterRole.Standalone, role);
+    }
+
+    [Fact]
+    public void ComputeRole_OneLocalUsbNotShared_ReturnsStandalone()
+    {
+        var printers = new[] { P(shared: false) };
+        Assert.Equal(PrinterRole.Standalone,
+            PrinterRoleMapper.ComputeRole(printers, Local));
+    }
+
+    [Fact]
+    public void ComputeRole_OneLocalUsbShared_ReturnsHost()
+    {
+        var printers = new[] { P(shared: true, shareName: "Canon2900") };
+        Assert.Equal(PrinterRole.Host,
+            PrinterRoleMapper.ComputeRole(printers, Local));
+    }
+
+    [Fact]
+    public void ComputeRole_SharedTrueButNoShareName_ReturnsStandalone()
+    {
+        // Shared=true nhưng ShareName rỗng — Windows sẽ không share
+        var printers = new[] { P(shared: true, shareName: "") };
+        Assert.Equal(PrinterRole.Standalone,
+            PrinterRoleMapper.ComputeRole(printers, Local));
+    }
+
+    [Fact]
+    public void ComputeRole_UsbAlone_NotCountedAsHost()
+    {
+        // Master Prompt Section 9: USB printer không đủ để suy luận Host.
+        var printers = new[]
+        {
+            P("Canon LBP2900", shared: false, shareName: "", type: PrinterConnectionType.Usb)
+        };
+        Assert.Equal(PrinterRole.Standalone,
+            PrinterRoleMapper.ComputeRole(printers, Local));
+    }
+
+    [Fact]
+    public void ComputeRole_OneRemoteShared_ReturnsClient()
+    {
+        var printers = new[]
+        {
+            P("Remote Printer",
+              shared: false,
+              shareName: "",
+              sourceHost: "PC-KETOAN-01",
+              type: PrinterConnectionType.NetworkShared)
+        };
+        Assert.Equal(PrinterRole.Client,
+            PrinterRoleMapper.ComputeRole(printers, Local));
+    }
+
+    [Fact]
+    public void ComputeRole_LocalSharedAndRemoteShared_ReturnsHybrid()
+    {
+        var printers = new[]
+        {
+            P("Local Shared", shared: true, shareName: "Canon2900"),
+            P("Remote Printer",
+              shared: false,
+              shareName: "",
+              sourceHost: "PC-KETOAN-01",
+              type: PrinterConnectionType.NetworkShared)
+        };
+        Assert.Equal(PrinterRole.Hybrid,
+            PrinterRoleMapper.ComputeRole(printers, Local));
+    }
+
+    [Fact]
+    public void ComputeRole_SelfSharedPrinter_NotRemote()
+    {
+        // SourceHost = máy hiện tại → không tính là remote
+        var printers = new[]
+        {
+            P("Local Shared", shared: true, shareName: "S", sourceHost: Local)
+        };
+        Assert.Equal(PrinterRole.Host,
+            PrinterRoleMapper.ComputeRole(printers, Local));
+    }
+
+    [Fact]
+    public void ComputeRole_CaseInsensitiveHostComparison()
+    {
+        var printers = new[]
+        {
+            P("P", shared: false, sourceHost: "pc-local")   // lowercase
+        };
+        // So với Local = "PC-LOCAL" — không phải remote
+        Assert.Equal(PrinterRole.Standalone,
+            PrinterRoleMapper.ComputeRole(printers, Local));
+    }
+
+    [Fact]
+    public void ComputeRole_EmptyLocalName_RemoteStillDetected()
+    {
+        var printers = new[]
+        {
+            P("P", sourceHost: "PC-KETOAN-01",
+              type: PrinterConnectionType.NetworkShared)
+        };
+        // local name = "" → mọi SourceHost non-empty đều là remote
+        Assert.Equal(PrinterRole.Client,
+            PrinterRoleMapper.ComputeRole(printers, ""));
+    }
+
+    // ============================================================
+    //   ApplyOverride
+    // ============================================================
+
+    [Theory]
+    [InlineData(PrinterRole.Standalone)]
+    [InlineData(PrinterRole.Host)]
+    [InlineData(PrinterRole.Client)]
+    [InlineData(PrinterRole.Hybrid)]
+    public void ApplyOverride_Auto_ReturnsDetected(PrinterRole detected)
+    {
+        Assert.Equal(detected,
+            PrinterRoleMapper.ApplyOverride(detected, RoleDetectionMode.Auto));
     }
 
     [Theory]
-    [InlineData(3, PrinterStatus.Ready)]  // Idle
-    [InlineData(4, PrinterStatus.Ready)]  // Printing
-    [InlineData(5, PrinterStatus.Ready)]  // Warmup
-    public void Map_ReadyStates(int wmiPrinterStatus, PrinterStatus expected)
+    [InlineData(PrinterRole.Standalone)]
+    [InlineData(PrinterRole.Host)]
+    [InlineData(PrinterRole.Client)]
+    [InlineData(PrinterRole.Hybrid)]
+    public void ApplyOverride_ForceHost_AlwaysReturnsHost(PrinterRole detected)
     {
-        var status = PrinterStatusMapper.Map(
-            workOffline: false,
-            printerStatus: wmiPrinterStatus,
-            detectedErrorState: 2);
-        Assert.Equal(expected, status);
-    }
-
-    [Fact]
-    public void Map_StoppedPrinting_ReturnsPaused()
-    {
-        var status = PrinterStatusMapper.Map(false, 6, 2);
-        Assert.Equal(PrinterStatus.Paused, status);
-    }
-
-    [Fact]
-    public void Map_Offline_ReturnsOffline()
-    {
-        var status = PrinterStatusMapper.Map(false, 7, 2);
-        Assert.Equal(PrinterStatus.Offline, status);
+        Assert.Equal(PrinterRole.Host,
+            PrinterRoleMapper.ApplyOverride(detected, RoleDetectionMode.ForceHost));
     }
 
     [Theory]
-    [InlineData(3, 4, PrinterStatus.Error)]   // Idle nhưng No Paper
-    [InlineData(3, 9, PrinterStatus.Error)]   // Idle nhưng Offline state
-    [InlineData(3, 10, PrinterStatus.Error)]  // Service Requested
-    public void Map_DetectedError_ReturnsError(
-        int printerStatus, int detectedErrorState, PrinterStatus expected)
+    [InlineData(PrinterRole.Standalone)]
+    [InlineData(PrinterRole.Host)]
+    [InlineData(PrinterRole.Client)]
+    [InlineData(PrinterRole.Hybrid)]
+    public void ApplyOverride_ForceClient_AlwaysReturnsClient(PrinterRole detected)
     {
-        var status = PrinterStatusMapper.Map(false, printerStatus, detectedErrorState);
-        Assert.Equal(expected, status);
-    }
-
-    [Fact]
-    public void Map_UnknownState_ReturnsUnknown()
-    {
-        var status = PrinterStatusMapper.Map(false, 2, 2);
-        Assert.Equal(PrinterStatus.Unknown, status);
-    }
-
-    [Fact]
-    public void Map_NullPrinterStatus_ReturnsUnknown()
-    {
-        var status = PrinterStatusMapper.Map(false, null, 2);
-        Assert.Equal(PrinterStatus.Unknown, status);
+        Assert.Equal(PrinterRole.Client,
+            PrinterRoleMapper.ApplyOverride(detected, RoleDetectionMode.ForceClient));
     }
 
     [Theory]
-    [InlineData(PrinterStatus.Ready,   "Ready")]
-    [InlineData(PrinterStatus.Offline, "Offline")]
-    [InlineData(PrinterStatus.Paused,  "Paused")]
-    [InlineData(PrinterStatus.Error,   "Error")]
-    [InlineData(PrinterStatus.Unknown, "Unknown")]
-    public void ToDisplayName_PrinterStatus(PrinterStatus status, string expected)
+    [InlineData(PrinterRole.Standalone)]
+    [InlineData(PrinterRole.Host)]
+    [InlineData(PrinterRole.Client)]
+    [InlineData(PrinterRole.Hybrid)]
+    public void ApplyOverride_ForceHybrid_AlwaysReturnsHybrid(PrinterRole detected)
     {
-        Assert.Equal(expected, PrinterStatusMapper.ToDisplayName(status));
+        Assert.Equal(PrinterRole.Hybrid,
+            PrinterRoleMapper.ApplyOverride(detected, RoleDetectionMode.ForceHybrid));
+    }
+
+    // ============================================================
+    //   Display names
+    // ============================================================
+
+    [Theory]
+    [InlineData(PrinterRole.Standalone, "Standalone")]
+    [InlineData(PrinterRole.Host,       "Printer Host")]
+    [InlineData(PrinterRole.Client,     "Printer Client")]
+    [InlineData(PrinterRole.Hybrid,     "Host + Client")]
+    public void ToDisplayName_PrinterRole(PrinterRole role, string expected)
+    {
+        Assert.Equal(expected, PrinterRoleMapper.ToDisplayName(role));
     }
 
     [Theory]
-    [InlineData(PrinterConnectionType.Usb,           "USB")]
-    [InlineData(PrinterConnectionType.TcpIp,         "TCP/IP")]
-    [InlineData(PrinterConnectionType.Wsd,           "WSD")]
-    [InlineData(PrinterConnectionType.NetworkShared, "Network Shared")]
-    [InlineData(PrinterConnectionType.Virtual,       "Virtual")]
-    [InlineData(PrinterConnectionType.Unknown,       "Unknown")]
-    public void ToDisplayName_ConnectionType(PrinterConnectionType type, string expected)
+    [InlineData(RoleDetectionMode.Auto,        "Auto Detect")]
+    [InlineData(RoleDetectionMode.ForceHost,   "Printer Host")]
+    [InlineData(RoleDetectionMode.ForceClient, "Printer Client")]
+    [InlineData(RoleDetectionMode.ForceHybrid, "Host + Client")]
+    public void ToDisplayName_RoleDetectionMode(RoleDetectionMode mode, string expected)
     {
-        Assert.Equal(expected, PrinterStatusMapper.ToDisplayName(type));
+        Assert.Equal(expected, PrinterRoleMapper.ToDisplayName(mode));
     }
 }

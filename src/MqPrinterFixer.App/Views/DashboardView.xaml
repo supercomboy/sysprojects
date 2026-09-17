@@ -11,7 +11,6 @@
                   Background="{DynamicResource AppBackgroundBrush}">
         <StackPanel Margin="24">
 
-            <!-- Header row: title + refresh -->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -32,46 +31,63 @@
                         VerticalAlignment="Top"/>
             </Grid>
 
-            <!-- 3 info cards -->
-            <UniformGrid Columns="3" Margin="0,24,0,0">
+            <!-- 4 cards: Computer | Windows | Printer Role | Network -->
+            <UniformGrid Columns="4" Margin="0,24,0,0">
 
-                <Border Style="{StaticResource CardStyle}" Margin="0,0,8,0">
+                <Border Style="{StaticResource CardStyle}" Margin="0,0,6,0">
                     <StackPanel>
                         <TextBlock Text="Computer" Style="{StaticResource SectionHeaderStyle}"/>
                         <TextBlock Text="{Binding ComputerInfo.ComputerName, TargetNullValue='Loading...'}"
-                                   Style="{StaticResource H2TextStyle}"/>
+                                   Style="{StaticResource H3TextStyle}"
+                                   TextTrimming="CharacterEllipsis"/>
                         <TextBlock Text="{Binding ComputerInfo.UserName, StringFormat='User: {0}', TargetNullValue=''}"
                                    Style="{StaticResource SmallTextStyle}"
-                                   Margin="0,6,0,0"/>
+                                   Margin="0,6,0,0"
+                                   TextTrimming="CharacterEllipsis"/>
                     </StackPanel>
                 </Border>
 
-                <Border Style="{StaticResource CardStyle}" Margin="8,0,8,0">
+                <Border Style="{StaticResource CardStyle}" Margin="6,0,6,0">
                     <StackPanel>
                         <TextBlock Text="Windows" Style="{StaticResource SectionHeaderStyle}"/>
                         <TextBlock Text="{Binding ComputerInfo.EditionDisplayName, TargetNullValue='Loading...'}"
-                                   Style="{StaticResource H3TextStyle}"/>
+                                   Style="{StaticResource H3TextStyle}"
+                                   TextTrimming="CharacterEllipsis"/>
                         <TextBlock Text="{Binding ComputerInfo.BuildNumber, StringFormat='Build: {0}', TargetNullValue=''}"
                                    Style="{StaticResource SmallTextStyle}"
                                    Margin="0,6,0,0"/>
                     </StackPanel>
                 </Border>
 
-                <Border Style="{StaticResource CardStyle}" Margin="8,0,0,0">
+                <Border Style="{StaticResource CardStyle}" Margin="6,0,6,0">
                     <StackPanel>
-                        <TextBlock Text="Privileges" Style="{StaticResource SectionHeaderStyle}"/>
-                        <TextBlock Text="{Binding ComputerInfo.IsAdministrator, StringFormat='Administrator: {0}', TargetNullValue='Loading...'}"
-                                   Style="{StaticResource H3TextStyle}"/>
-                        <TextBlock Text="Read-only access. Elevation chỉ cần cho thao tác thay đổi."
+                        <TextBlock Text="Printer Role" Style="{StaticResource SectionHeaderStyle}"/>
+                        <TextBlock Text="{Binding PrinterRoleDisplay}"
+                                   Style="{StaticResource H3TextStyle}"
+                                   TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Text="{Binding PrinterRoleDetail}"
                                    Style="{StaticResource SmallTextStyle}"
                                    Margin="0,6,0,0"
                                    TextWrapping="Wrap"/>
                     </StackPanel>
                 </Border>
 
+                <Border Style="{StaticResource CardStyle}" Margin="6,0,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Network" Style="{StaticResource SectionHeaderStyle}"/>
+                        <TextBlock Text="{Binding NetworkCategoryDisplay}"
+                                   Style="{StaticResource H3TextStyle}"
+                                   TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Text="{Binding NetworkDetail}"
+                                   Style="{StaticResource SmallTextStyle}"
+                                   Margin="0,6,0,0"
+                                   TextWrapping="Wrap"
+                                   TextTrimming="CharacterEllipsis"/>
+                    </StackPanel>
+                </Border>
+
             </UniformGrid>
 
-            <!-- Loading indicator: CHỈ dùng TextBlock.Style element, KHÔNG có Style attribute -->
             <TextBlock Text="Loading system information..."
                        HorizontalAlignment="Center"
                        Margin="0,24,0,0">

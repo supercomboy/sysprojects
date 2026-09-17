@@ -14,8 +14,13 @@ public static class ServiceConfiguration
         services.AddSingleton<ISystemInfoService, SystemInfoService>();
         services.AddSingleton<IComputerService, ComputerService>();
         services.AddSingleton<IPrinterService, PrinterService>();
+        services.AddSingleton<IPrinterRoleDetectionService, PrinterRoleDetectionService>();
+        services.AddSingleton<INetworkService, NetworkService>();
+        services.AddSingleton<INetworkSharingService, NetworkSharingService>();
         services.AddSingleton<IThemeService, ThemeService>();
         services.AddSingleton<INavigationService, NavigationService>();
+        services.AddSingleton<IFirewallService, FirewallService>();
+        services.AddSingleton<ISpoolerService, SpoolerService>();
 
         // ----- Page ViewModels -----
         services.AddSingleton<DashboardViewModel>();
@@ -27,7 +32,7 @@ public static class ServiceConfiguration
         services.AddSingleton<LogsViewModel>();
         services.AddSingleton<SettingsViewModel>();
 
-        // ----- Dialog ViewModels (transient) -----
+        // ----- Dialog ViewModels -----
         services.AddTransient<RenameComputerDialogViewModel>();
 
         // ----- Shell ViewModel & Window -----
